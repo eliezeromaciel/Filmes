@@ -4,7 +4,6 @@ import { Card } from "./components/card";
 import { Input } from "./components/Input";
 import {getDatasApi} from "./components/Api/movie"
 import {Main, Header, NavContainer, SearchContainer} from "./globalstyles"
-import { useEffect } from "react";
 
 function App() {
   const [filmes, setFilmes] = useState([])
@@ -27,9 +26,11 @@ function App() {
     console.log(page)
   }
 
-  // useEffect(()=> {
-  //   getMovies((nomeFilme, anoFilme, page))
-  // }, [page])
+  const funcaoTeste = (param) => {
+    setNomeFilme(param.target.value)
+    handleClickButton()
+  
+  }
 
   return (
     <div>
@@ -38,8 +39,7 @@ function App() {
       </Header>
       <Main >
         <SearchContainer>
-          <Input placeholder={"Nome do Filme"} onChange={(param) => {
-              setNomeFilme(param.target.value)}}/>
+          <Input placeholder={"Nome do Filme"} onChange={funcaoTeste}/>
           <Input placeholder={"Ano"} onChange={(param) => {
               setAnoFilme(param.target.value)}}/>
           <Botao onClick={handleClickButton} text={"Buscar"}/>
